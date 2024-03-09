@@ -33,7 +33,7 @@ function Navbar() {
             <div className="w-full bg-blue-500 text-gray-100">
                 <div className="relative container mx-auto h-fit flex items-center justify-between">
                     <NavLink to={'/'} className="flex items-center space-x-1 p-2 cursor-pointer">
-                        <i className="fa-solid fa-blog text-md md:text-xl border-2 p-2 rounded-full w-fit"></i><span className="font-bold text-md md:text-xl cursor-pointer">BloggerGram</span>
+                        <i className="fa-solid fa-blog text-md md:text-xl border-2 p-2 rounded-full w-fit"></i><span className="font-bold text-lg md:text-xl cursor-pointer">BloggerGram</span>
                     </NavLink>
                     <div className="flex items-center space-x-2 md:space-x-6">  
                         <NavLink to={'/Upload'} className='flex items-center space-x-1 uppercase border-b-2 ease-linear duration-150 border-b-transparent hover:border-b-gray-200 p-2'>

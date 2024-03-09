@@ -33,9 +33,15 @@ function Login() {
                 <div className="bg-white flex flex-col items-center justify-center  text-blue-500 mx-auto w-full lg:w-1/2 p-2 rounded-lg">
                     <div className="flex flex-col w-full p-2">
                         <div className='w-full flex justify-between items-center'>
-                            <div>
-                                <h2 className="text-xl font-bold uppercase">Log In</h2>
-                                <p className="mb-8">Not Yet Signed Up? <Link to='/Signup'className=" underline">Sign Up</Link></p>
+                            <div className='w-full flex flex-col space-y-10'>
+                                <div className='md:hidden w-full flex items-center justify-center text-2xl '>
+                                    <i className="fa-solid fa-blog text-md md:text-xl border-2 border-blue-500 p-2 rounded-full w-fit"></i>
+                                    <span className="font-bold text-md md:text-xl cursor-pointer">BloggerGram</span>
+                                </div>
+                                <div>
+                                    <h2 className="text-xl font-bold uppercase">Log In</h2>
+                                    <p className="mb-8">Not Yet Signed Up? <Link to='/Signup'className=" underline">Sign Up</Link></p>
+                                </div>
                             </div>
                             <Link to='/' className='p-2 '>
                                 <i className="fa-solid fa-x border-2 border-blue-500 rounded-md p-1"></i>

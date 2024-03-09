@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home/Home';
 import Signup from './pages/signup/Signup';
 import Login from './pages/Login/Login';
+import Loader from './components/Loader';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function App() {
@@ -10,6 +11,7 @@ function App() {
   return (
     <>
       <ToastContainer/>
+      <Loader/>
       <Navbar />
       <div className="container mx-auto overflow-auto">  
         <Routes>
