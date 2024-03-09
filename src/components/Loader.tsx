@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import loader from '../assets/1484.gif'
 function Loader() {
-    const [isLoading, setIsLoading] = useState<boolean>(true)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     useEffect(()=>{
         document.onreadystatechange = () =>{
-            if(document.readyState === 'complete'){
+            if(document.readyState !== 'complete'){
+                setIsLoading(true)
+            }else{
                 console.log('complete')
                 setIsLoading(false);
             }
