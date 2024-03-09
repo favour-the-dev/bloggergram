@@ -11,7 +11,7 @@ function Signup() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const naviagate = useNavigate();
-    const auth: Auth = getAuth(app);
+    const auth = getAuth(app);
     const handleSubmit = async ()=>{
         if(firstName !== '' && lastName !== '' && password != '' && confirmPassword !== ''){
             const displayName = `${firstName} ${lastName}`

@@ -6,7 +6,7 @@ function Navbar() {
     const [clicked, setClicked] = useState(false);
     const [viewProfile, setViewProfile] = useState(false);
     const navigate = useNavigate()
-    const auth: Auth = getAuth(app);
+    const auth = getAuth(app);
     const UserRef = useRef<HTMLDivElement | null>(null);
     const [loggedin, setLoggedIn] = useState<boolean>(false);
     const handleSignOut = ()=>{
