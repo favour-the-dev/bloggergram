@@ -4,7 +4,7 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import app from "../firebase/firebase";
 function Navbar() {
     const [clicked, setClicked] = useState(false);
-    const [viewProfile, setViewProfile] = useState(false);
+    // const [viewProfile, setViewProfile] = useState(false);
     const navigate = useNavigate()
     const auth = getAuth(app);
     const UserRef = useRef<any>(null);
@@ -22,7 +22,6 @@ function Navbar() {
             if(user){
                 setLoggedIn(true);
                 UserRef.current.textContent = user.displayName;
-                
             }else{
                 setLoggedIn(false);
                 console.log('no user signed in')
@@ -32,7 +31,7 @@ function Navbar() {
     return ( 
         <>
             <div className="w-full bg-blue-500 text-gray-100">
-                <div className="relative container mx-auto h-fit flex items-center justify-between ">
+                <div className="relative container mx-auto h-fit flex items-center justify-between">
                     <NavLink to={'/'} className="flex items-center space-x-1 p-2 cursor-pointer">
                         <i className="fa-solid fa-blog text-md md:text-xl border-2 p-2 rounded-full w-fit"></i><span className="font-bold text-md md:text-xl cursor-pointer">BloggerGram</span>
                     </NavLink>
@@ -41,19 +40,9 @@ function Navbar() {
                             <i className="fa-solid fa-pen"></i><span className="hidden md:block">Upload</span>
                         </NavLink>
                         <NavLink to={'/Profile'} className='relative flex items-center space-x-1 uppercase border-b-2 ease-linear duration-150 border-b-transparent hover:border-b-gray-200 p-2'>
-                            <i className="fa-solid fa-user" onMouseEnter={()=>{
-                                setViewProfile(!viewProfile)
-                            }} onClick={()=>{
-                                setViewProfile(!viewProfile)
-                            }}></i>
+                            <i className="fa-solid fa-user"></i>
                             <div 
-                                className=
-                                {
-                                viewProfile ? 
-                                `absolute ${loggedin ? 'block' : 'hidden'} top-8 rounded-md left-0 bg-white md:bg-transparent text-blue-500 md:text-white p-2 md:p-0 md:static` 
-                                : 
-                                `${loggedin ? 'block' : 'hidden'} absolute top-8 rounded-md left-0 bg-white md:bg-transparent text-blue-500 md:text-white p-2 md:p-0 md:static`
-                                } 
+                                className={`${loggedin ? 'hidden md:block' : 'hidden'} text-white`}
                                 ref={UserRef}>
                                 </div>
                             {loggedin ? '' : <span className="hidden md:block">Profile</span>}

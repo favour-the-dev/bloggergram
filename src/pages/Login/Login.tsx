@@ -2,6 +2,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import app from '../../firebase/firebase';
 import { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
+import { toast } from 'react-toastify';
 function Login() {
     const [email, setEmail]= useState('');
     const [password, setPassword] = useState('');
@@ -13,9 +14,11 @@ function Login() {
             .then((userCredential)=>{
                 const user = userCredential.user;
                 console.log(user);
+                toast.success('Logged in successfully')
                 navigate('/')
             }).catch((error)=>{
                 console.log(error)
+                toast.error(error.message)
             })
         }else{
             alert('please fill in all fields')
@@ -31,7 +34,7 @@ function Login() {
                     <div className="flex flex-col w-full p-2">
                         <div className='w-full flex justify-between items-center'>
                             <div>
-                                <h2 className="text-xl font-bold uppercase">Sign Up</h2>
+                                <h2 className="text-xl font-bold uppercase">Log In</h2>
                                 <p className="mb-8">Not Yet Signed Up? <Link to='/Signup'className=" underline">Sign Up</Link></p>
                             </div>
                             <Link to='/' className='p-2 '>

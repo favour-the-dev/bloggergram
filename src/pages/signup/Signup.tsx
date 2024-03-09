@@ -2,6 +2,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth';
 import app from '../../firebase/firebase';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 
 function Signup() {
@@ -14,20 +15,29 @@ function Signup() {
     const auth: any = getAuth(app);
     const handleSubmit = async ()=>{
         if(firstName !== '' && lastName !== '' && password != '' && confirmPassword !== ''){
-            const displayName = `${firstName} ${lastName}`
-            await createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredentials)=>{
-                const user = userCredentials.user;
-                console.log(user);
-            }).catch((error)=>{
-                console.log(error);
-                alert(error.message)
-            })
-            await updateProfile(auth.currentUser, {displayName: displayName})
-            .catch((err)=>{console.log(err)})
-            naviagate('/Login')
+            if(password === confirmPassword){
+                if(password.length >= 8){
+                    const displayName = `${firstName} ${lastName}`
+                    await createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredentials)=>{
+                        const user = userCredentials.user;
+                        console.log(user);
+                        toast.success('signed up successfully')
+                    }).catch((error)=>{
+                        console.log(error);
+                        toast.error(error.message)
+                    })
+                    await updateProfile(auth.currentUser, {displayName: displayName})
+                    .catch((err)=>{console.log(err)})
+                    naviagate('/Login')
+                }else{
+                    toast.error('password must be at least 8 characters')
+                }
+            }else{
+                toast.error('passwords dont match')
+            }
         }else{
-            alert('fill all details')
+            toast.error('fill all details')
         }
     }
     return ( 
