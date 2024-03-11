@@ -69,9 +69,12 @@ function Navbar() {
                                     {!clicked ? <i className="fa-solid fa-bars"></i> : 
                                     <i className="fa-solid fa-x"></i>}
                                 </div>
-                                <div className={clicked ? 'flex flex-col md:items-center md:flex-row space-y-2 md:space-y-0 md:space-x-3 absolute bg-blue-500 md:bg-transparent md:static right-0 p-4 md:p-0' : 'hidden md:flex flex-row space-x-3'}>
+                                <div className={clicked ? 
+                                    'ease-linear duration-200 flex flex-col md:items-center md:flex-row space-y-2 md:space-y-0 md:space-x-3 absolute bg-blue-500 md:bg-transparent md:static right-0 p-4 md:p-0' 
+                                    : 'hidden md:flex flex-row space-x-3'}>
                                     <div className="flex flex-col md:items-center md:space-x-2 md:flex-row" onClick={(e)=>{
                                         checkedSignedIn(e)
+                                        setClicked(false)
                                     }}>
                                         <NavLink to={'/Search'}  className='flex items-center space-x-1 uppercase border-b-2 ease-linear duration-150 border-b-transparent hover:border-b-gray-200 p-2'>
                                             <i className="fa-solid fa-magnifying-glass"></i>
@@ -91,7 +94,9 @@ function Navbar() {
                                         </NavLink>
                                     </div>
                                     {!loggedin ? 
-                                    <div className="w-full flex md:items-center flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
+                                    <div onClick={()=>{
+                                        setClicked(false)
+                                    }} className="w-full flex md:items-center flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
                                         <NavLink to={'/Login'} className='bg-white text-blue-500 hover:bg-transparent hover:border-white hover:text-white px-2 md:px-4 py-1 rounded-lg border-2 border-transparent ease-in-out duration-200'>
                                             Login
                                         </NavLink>
@@ -104,6 +109,7 @@ function Navbar() {
                                     className="flex items-center justify-center border-2 border-white rounded-md px-2 py-1 cursor-pointer"
                                     onClick={()=>{
                                         handleSignOut()
+                                        setClicked(false)
                                     }}
                                     >
                                         {

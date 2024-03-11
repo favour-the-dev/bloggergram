@@ -4,7 +4,7 @@ function NotSignedIn({showModalProp, setShowModalProp}: {showModalProp: boolean,
     return ( 
         <>
         <div className={showModalProp ? "flex flex-col items-center justify-center fixed top-0 left-0 w-[100dvw] h-[100dvh] bg-black bg-opacity-60 z-[1500] overflow-hidden" : "hidden"}>
-            <div className="rounded-lg relative w-2/3 md:w-fit p-8 bg-blue-500 text-white flex flex-col space-y-4">
+            <div className="rounded-lg relative w-2/3 lg:w-fit p-8 bg-blue-500 text-white flex flex-col space-y-4">
                 <div>
                     <h2>Please Sign In To Continue.</h2>
                 </div>

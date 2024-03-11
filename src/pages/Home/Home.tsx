@@ -1,6 +1,7 @@
 import fetchBlogs from "../../api/fetchBlogs";
 import {toast} from 'react-toastify';
 import { useState, useEffect} from "react";
+import Banner from "./components/Banner";
 import BlogPost from "./components/BlogPost";
 import CompLoader from "../../components/CompLoader";
 function Home() {
@@ -24,24 +25,28 @@ function Home() {
         <>
             <div className="p-4">
                 <CompLoader isLoading={loading}/>
-                <h2 className="text-xl md:text-2xl uppercase text-blue-400 fofnt-bold my-4">Featured Blogs</h2>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
-                    {
-                        blogsArr.map((blog, index)=>{
-                            return(
-                                <BlogPost 
-                                key={index}
-                                title={blog.title}
-                                author={blog.author}
-                                category={blog.category}
-                                imageUrl={blog.image}
-                                desc={blog.description}
-                                artLink={blog.url}
-                                published={blog.published}
-                                />
-                            )
-                        })
-                    }
+                <Banner/>
+                <div>
+                    <h2 className="text-xl md:text-2xl uppercase text-blue-400 fofnt-bold my-4">
+                        Latest Blogs</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                        {
+                            blogsArr.map((blog, index)=>{
+                                return(
+                                    <BlogPost 
+                                    key={index}
+                                    title={blog.title}
+                                    author={blog.author}
+                                    category={blog.category}
+                                    imageUrl={blog.image}
+                                    desc={blog.description}
+                                    artLink={blog.url}
+                                    published={blog.published}
+                                    />
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         </>
