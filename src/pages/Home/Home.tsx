@@ -15,7 +15,7 @@ function Home() {
             setLoading(false)
             toast.success('successfully fetched blogs')
             const blogaArr = await reponse.data.news;
-            setBlogsArr(blogaArr.slice(0, 10))
+            setBlogsArr(blogaArr.slice(0, 8))
         }).catch((err)=>{
             toast.error(err.message)
         })

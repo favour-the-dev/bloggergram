@@ -3,9 +3,11 @@ import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/a
 import app from '../../firebase/firebase';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import Loaderspin from '../../assets/1497.gif';
 
 
 function Signup() {
+    const [loader, setLoader] = useState<boolean>(false);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -18,6 +20,7 @@ function Signup() {
             if(password === confirmPassword){
                 if(password.length >= 8){
                     const displayName = `${firstName} ${lastName}`
+                    setLoader(true)
                     await createUserWithEmailAndPassword(auth, email, password)
                     .then((userCredentials)=>{
                         const user = userCredentials.user;
@@ -30,6 +33,7 @@ function Signup() {
                     await updateProfile(auth.currentUser, {displayName: displayName})
                     .catch((err)=>{console.log(err)})
                     naviagate('/Login')
+                    setLoader(false)
                 }else{
                     toast.error('password must be at least 8 characters')
                 }
@@ -120,7 +124,12 @@ function Signup() {
                                 className="p-2 border-b-2 border-blue-500 outline-none" 
                                 value={confirmPassword}/>
                             </label>
-                            <input type="submit" value="Sign Up" className="cursor-pointer p-2 bg-blue-500 text-white"/>
+                            {
+                                loader? <div className="cursor-pointer p-2 bg-blue-500 text-white flex items-center justify-center">
+                                    <img src={Loaderspin} alt="" className='w-6'/>
+                                </div>  : 
+                                <input type="submit" value="Sign Up" className="cursor-pointer p-2 bg-blue-500 text-white"/>
+                            }
                         </form>
                     </div>
                 </div>

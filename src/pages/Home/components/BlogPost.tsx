@@ -9,8 +9,8 @@ function BlogPost(props: {
 }) {
     return ( 
         <>
-            <a href={props.artLink} target="blank_" className="p-2 block bg-white border-2 border-blue-100 text-blue-500 w-full rounded-md shadow-md">
-                <div className="flex flex-col gap-1 md:space-y-2">
+            <a href={props.artLink} target="blank_" className="p-2 block bg-white border-2 border-blue-100 text-blue-500 w-full rounded-md">
+                <div className="flex flex-col gap-1  md:space-y-2">
                     <div className="w-full h-[150px] md:h-[200px] rounded-lg mx-auto">
                         <img src={props.imageUrl} alt="image" className="w-full h-full object-cover md:object-cover rounded-lg"/>
                     </div>

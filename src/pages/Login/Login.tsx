@@ -3,25 +3,29 @@ import app from '../../firebase/firebase';
 import { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify';
+import Loaderspin from '../../assets/1497.gif';
 function Login() {
     const [email, setEmail]= useState('');
+    const [loader, setLoader] = useState<boolean>(false);
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const auth = getAuth(app);
     const handleSubmit = ()=>{
         if(email !== '' && password !== ''){
+            setLoader(true)
             signInWithEmailAndPassword(auth, email, password)
             .then((userCredential)=>{
                 const user = userCredential.user;
                 console.log(user);
                 toast.success('Logged in successfully')
                 navigate('/')
+                setLoader(false)
             }).catch((error)=>{
                 console.log(error)
                 toast.error(error.message)
             })
         }else{
-            alert('please fill in all fields')
+            toast.error('please fill in all fields')
         }
     }
     return ( 
@@ -70,7 +74,12 @@ function Login() {
                                 className="p-2 border-b-2 border-blue-500 outline-none" 
                                 value={password}/>
                             </label>
-                            <input type="submit" value="Log in" className="cursor-pointer p-2 bg-blue-500 text-white"/>
+                            {
+                                loader ? <div className="cursor-pointer p-2 bg-blue-500 text-white flex items-center justify-center">
+                                        <img src={Loaderspin} alt="" className='w-6'/>
+                                    </div> 
+                                : <input type="submit" value="Log in" className="cursor-pointer p-2 bg-blue-500 text-white"/>
+                            }
                         </form>
                     </div>
                 </div>
