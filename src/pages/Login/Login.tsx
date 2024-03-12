@@ -18,7 +18,7 @@ function Login() {
                 const user = userCredential.user;
                 console.log(user);
                 toast.success('Logged in successfully')
-                navigate('/')
+                navigate('/Dash')
                 setLoader(false)
             }).catch((error)=>{
                 console.log(error)

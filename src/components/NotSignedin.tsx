@@ -11,7 +11,9 @@ function NotSignedIn({showModalProp, setShowModalProp}: {showModalProp: boolean,
                 <div onClick={()=>{
                     setShowModalProp(false);
                 }} className="absolute right-2 top-0 p-1 text-xs border-2 rounded-full w-6 h-6 flex items-center justify-center cursor-pointer"><i className="fa-solid fa-x"></i></div>
-                <div className="flex space-x-4 items-center w-full justify-between">
+                <div onClick={()=>{
+                    setShowModalProp(false);
+                }} className="flex space-x-4 items-center w-full justify-between">
                     <NavLink to={'/Login'} className='text-center w-1/2 bg-white text-blue-500 hover:bg-transparent hover:border-white hover:text-white px-2 md:px-4 py-1 rounded-lg border-2 border-transparent ease-in-out duration-200'>
                         Login
                     </NavLink>

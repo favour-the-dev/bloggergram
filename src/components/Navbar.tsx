@@ -20,7 +20,6 @@ function Navbar() {
         setTimeout(()=>{
             signOut(auth).then(()=>{
                 setSignedIn(false);
-                location.reload()
                 navigate('/')
                 setLoader(false)
                 console.log('signed out')
