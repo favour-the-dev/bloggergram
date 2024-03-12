@@ -5,17 +5,17 @@ import CompLoader from "../../components/CompLoader";
 
 function Profile() {
     const auth = getAuth(app)
-    const userRef = useRef<HTMLDivElement>()
+    const userRef = useRef<any>()
     const [loading, setIsLoading] = useState<boolean>(false)
     useEffect(()=>{
         setIsLoading(true)
         setTimeout(()=>{
             onAuthStateChanged(auth, (user)=>{
                 if(user){
-                    userRef.current.innerHTML = `<span class="text-xl">Name: ${user.displayName}</span>
+                    userRef.current.innerHTML = 
+                    `<span class="text-xl">Name: ${user.displayName}</span>
                     <span class="text-xl">Email: ${user.email}</span>
                     <span class="text-xl">PhoneNo: ${user.phoneNumber ? user.phoneNumber : 'not available'}</span>
-                    <span class="text-xl">Date Joined: ${new Date(user.metadata.creationTime).toDateString()}</span>
                     `
                     setIsLoading(false)
                     }
